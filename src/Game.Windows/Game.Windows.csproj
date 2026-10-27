@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType Condition="'$(Console)' != 'true'">WinExe</OutputType>
+    <OutputType Condition="'$(Console)' == 'true'">Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>AGS Tower</AssemblyName>
+    <Product>AGS Tower</Product>
+    <Title>AGS Tower</Title>
+    <Description>AGS Tower — tower defense game</Description>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <RollForward>LatestMajor</RollForward>
+    <ApplicationIcon>../../docs/store/assets/ags-tower.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="../../docs/store/assets/ags-tower.ico" Link="Content/app.ico" CopyToOutputDirectory="PreserveNewest" />
+    <ProjectReference Include="../Game.UI/Game.UI.csproj" />
+    <ProjectReference Include="../Game.Content/Game.Content.csproj" />
+    <ProjectReference Include="../Game.Persistence/Game.Persistence.csproj" />
+    <Content Include="../../assets/generated/font.*" Link="Content/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../assets/generated/display.*" Link="Content/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../assets/imported/**/*" Link="Content/imported/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../licenses/*" Link="licenses/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

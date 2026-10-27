@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Game.Core/Game.Core.csproj" />
+    <ProjectReference Include="../Game.Content/Game.Content.csproj" />
+    <ProjectReference Include="../Game.Persistence/Game.Persistence.csproj" />
+    <ProjectReference Include="../Game.UI/Game.UI.csproj" />
+    <Content Include="../../assets/generated/font.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

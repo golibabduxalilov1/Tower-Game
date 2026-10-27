@@ -1,0 +1,35 @@
+# New icon controls and safe tower information navigation.
+expect screen Menu
+press sound
+press music
+press achievements
+expect screen Achievements
+press back
+expect screen Menu
+press @play
+press map:0
+press @start
+press tower:Gatling
+cell 3 4
+cancel
+cell 3 4
+press tower_info
+expect screen Help
+expect state Paused
+expect saved True
+background
+expect saved True
+press back
+expect screen Battle
+expect dialog Pause
+press restart
+expect dialog Restart
+press @no
+expect dialog Pause
+expect towers 1
+press restart
+press @yes
+expect state Preparation
+expect towers 0
+expect wave 0
+quit

@@ -1,0 +1,9 @@
+{
+  "created": "2026-10-21",
+  "tool": "image_gen.imagegen",
+  "source": "foliage-hd-v1.png",
+  "sha256": "2c5b0df4e5b43098035239357bca3b1268f6d6607a59109b8b7fc7b4b6b90666",
+  "purpose": "New high-resolution foliage replacing small archive sprites",
+  "transparent_background": true,
+  "note": "Generated atlas is distinct from supplied Fieldrunners2 artwork. RGB/alpha are preserved during sprite slicing."
+}

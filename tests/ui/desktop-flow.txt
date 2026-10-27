@@ -1,0 +1,118 @@
+# Desktop UI flow on a fresh profile, Uzbek interface (run with --lang=uz --size=1280x720).
+expect screen Menu
+key Tab
+expect focus @play
+key Enter
+expect screen Maps
+# Locked map: stays on the list and explains why.
+press map:1
+expect screen Maps
+expect toast Oldingi xaritada 50-to‘lqinni yakunlang
+press map:0
+expect screen Setup
+# Locked modes cannot be chosen.
+press mode:Endless
+press @Easy
+press @start
+expect screen Battle
+expect state Preparation
+expect money 180
+expect wave 0
+# Build: pick Gatling, click a cell.
+press tower:Gatling
+expect build Gatling
+cell 3 4
+expect towers 1
+expect money 140
+# Entrance cell is not buildable; the state does not change.
+cell 0 6
+expect toast Bu yerga qurib bo‘lmaydi
+expect towers 1
+expect money 140
+cancel
+expect build none
+# Tower panel: priority, upgrade, sell with confirmation.
+cell 3 4
+expect selected True
+press priority
+expect priority Nearest
+press upgrade
+expect level 2
+expect money 110
+press sell
+expect dialog Sell
+press @no
+expect dialog None
+expect towers 1
+press sell
+press @sell
+expect towers 0
+# Before the first wave selling refunds everything spent (40 + 30).
+expect money 180
+# A small maze, then start.
+press tower:Gatling
+cell 3 3
+cell 3 5
+cell 5 4
+expect towers 3
+cancel
+press @start_wave
+expect state Active
+expect wave 1
+press speed
+expect fast True
+wait 120
+shot artifacts/ui-tests/desktop-wave.png
+# Pause via the HUD button, then save and exit.
+press pause
+expect dialog Pause
+expect state Paused
+press @save_exit
+expect screen Menu
+expect saved True
+# Continue restores the same battle, paused.
+press @continue
+expect screen Battle
+expect dialog Pause
+expect towers 3
+expect wave 1
+press @resume
+expect dialog None
+expect state Active
+# Esc and Android Back both open and close the pause menu.
+key Escape
+expect dialog Pause
+key Escape
+expect dialog None
+back
+expect dialog Pause
+# Settings from the pause menu: language and a key rebinding.
+press @settings
+expect screen Settings
+press Eng
+expect language en
+press bind:Pause
+key P
+expect key Pause P
+press back
+expect screen Battle
+expect dialog Pause
+press @resume
+key P
+expect dialog Pause
+press @resume
+# Zoom with the wheel or a pinch keeps the battle running.
+zoom 640 340 2
+expect zoomed True
+# Let wave 1 finish: the wave end is saved automatically.
+wait_state Intermission 2400
+expect state Intermission
+expect saved True
+# Going to the background pauses and saves.
+background
+expect dialog Pause
+expect state Paused
+shot artifacts/ui-tests/desktop-paused.png
+press @save_exit
+expect screen Menu
+quit

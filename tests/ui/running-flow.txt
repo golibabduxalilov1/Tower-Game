@@ -1,0 +1,22 @@
+# Capture real movement and confirm that pause freezes the displayed soldiers.
+expect screen Menu
+press @play
+press map:0
+press @start
+press @start_wave
+expect state Active
+wait 75
+shot artifacts/running-soldiers/moving-a.png
+wait 4
+shot artifacts/running-soldiers/moving-b.png
+press pause
+expect state Paused
+shot artifacts/running-soldiers/paused-a.png
+wait 45
+shot artifacts/running-soldiers/paused-b.png
+expect state Paused
+press @resume
+expect state Active
+wait 15
+shot artifacts/running-soldiers/resumed.png
+quit

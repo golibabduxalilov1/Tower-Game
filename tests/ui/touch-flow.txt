@@ -1,0 +1,37 @@
+# Touch layout (run with --touch=1.4 --size=1200x540 --lang=en): building needs an explicit confirm.
+expect screen Menu
+press @play
+press map:0
+press @start
+expect screen Battle
+expect touch_targets True
+press tower:Gatling
+expect build Gatling
+# First tap only previews.
+cell 3 4
+expect towers 0
+# Confirm builds on the previewed cell.
+press @confirm
+expect towers 1
+expect money 110
+expect touch_targets True
+# Tapping the same cell twice also confirms.
+cell 5 4
+cell 5 4
+expect towers 2
+press @cancel
+expect build none
+# Two-finger pinch zooms around the gesture centre.
+zoom 600 270 1.8
+expect zoomed True
+shot artifacts/ui-tests/touch-zoomed.png
+# Android Back: closes the panel first, then pauses.
+cell 5 4
+expect selected True
+back
+expect selected False
+back
+expect dialog Pause
+press @resume
+expect dialog None
+quit

@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><TargetFramework>net10.0</TargetFramework></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Game.Core/Game.Core.csproj" />
+    <EmbeddedResource Include="../../content/campaign.json" LogicalName="TowerGame.Content.campaign.json" Condition="Exists('../../content/campaign.json')" />
+  </ItemGroup>
+</Project>

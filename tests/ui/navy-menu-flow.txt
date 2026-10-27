@@ -1,0 +1,17 @@
+expect screen Menu
+key Tab
+expect focus @play
+shot artifacts/navy-menu/focus.png
+press @play
+press map:0
+press @start
+expect screen Battle
+press pause
+expect state Paused
+press @save_exit
+expect screen Menu
+shot artifacts/navy-menu/saved-menu.png
+press @continue
+expect screen Battle
+expect dialog Pause
+quit

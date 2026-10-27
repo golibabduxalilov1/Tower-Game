@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(& .\\\\.tools\\\\dotnet\\\\dotnet.exe build src\\\\Game.Core\\\\Game.Core.csproj -nologo -v q 2>&1)",
+      "PowerShell(. .\\\\scripts\\\\env.ps1; & $Dotnet --version; & $Dotnet workload list 2>&1 | Select-Object -First 15; Get-ChildItem .tools\\\\nuget -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Name; Get-ChildItem .tools\\\\packages -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Name; Get-Content gan-harness\\\\eval-rubric.md; Get-Content docs\\\\store\\\\release-checklist.md)",
+      "PowerShell(. .\\\\scripts\\\\env.ps1; & $Dotnet build src/Game.Tests/Game.Tests.csproj -c Release -nologo -v q 2>&1 | Select-Object -Last 5; & $Dotnet run --project src/Game.Tests/Game.Tests.csproj -c Release --no-build 2>&1 | Select-Object -Last 8; & $Dotnet run --project src/Game.IntegrationTests/Game.IntegrationTests.csproj -c Release 2>&1 | Select-Object -Last 6)",
+      "PowerShell(Get-ChildItem -Force | Select-Object Mode,Name; Get-ChildItem -Recurse -Depth 2 -Directory | Where-Object { $_.Name -match 'win|steam|android|ios|linux|mac|web|build|export|platform' } | Select-Object FullName)"
+    ]
+  }
+}

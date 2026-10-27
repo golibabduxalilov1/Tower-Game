@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>TowerGame.Android</RootNamespace>
+    <AssemblyName>Qalqon</AssemblyName>
+    <!-- Placeholder store identity; the owner confirms the final ID before the first Play upload. -->
+    <ApplicationId>uz.qalqon.defense</ApplicationId>
+    <ApplicationTitle>Qalqon</ApplicationTitle>
+    <ApplicationVersion>3</ApplicationVersion>
+    <ApplicationDisplayVersion>0.3.0</ApplicationDisplayVersion>
+    <RuntimeIdentifiers>android-arm64</RuntimeIdentifiers>
+    <AndroidPackageFormat Condition="'$(Configuration)' == 'Release'">aab</AndroidPackageFormat>
+    <AndroidPackageFormat Condition="'$(Configuration)' != 'Release'">apk</AndroidPackageFormat>
+    <AndroidLinkMode Condition="'$(Configuration)' == 'Release'">SdkOnly</AndroidLinkMode>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <DefineConstants>$(DefineConstants);ANDROID</DefineConstants>
+  </PropertyGroup>
+  <!-- Release signing is opt-in through environment-provided values; keys never live in the repository. -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release' And '$(QALQON_KEYSTORE)' != ''">
+    <AndroidKeyStore>true</AndroidKeyStore>
+    <AndroidSigningKeyStore>$(QALQON_KEYSTORE)</AndroidSigningKeyStore>
+    <AndroidSigningKeyAlias>$(QALQON_KEY_ALIAS)</AndroidSigningKeyAlias>
+    <AndroidSigningStorePass>env:QALQON_STORE_PASS</AndroidSigningStorePass>
+    <AndroidSigningKeyPass>env:QALQON_KEY_PASS</AndroidSigningKeyPass>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.Android" Version="3.8.5.1" />
+    <ProjectReference Include="../Game.Core/Game.Core.csproj" />
+    <ProjectReference Include="../Game.Content/Game.Content.csproj" />
+    <ProjectReference Include="../Game.Platform/Game.Platform.csproj" />
+    <ProjectReference Include="../Game.Persistence/Game.Persistence.csproj" />
+    <!-- Shared MonoGame code compiled against the Android backend (the desktop projects reference DesktopGL). -->
+    <Compile Include="../Game.Rendering/**/*.cs" Exclude="../Game.Rendering/obj/**;../Game.Rendering/bin/**" Link="Shared/Rendering/%(RecursiveDir)%(Filename)%(Extension)" />
+    <Compile Include="../Game.Audio/**/*.cs" Exclude="../Game.Audio/obj/**;../Game.Audio/bin/**" Link="Shared/Audio/%(RecursiveDir)%(Filename)%(Extension)" />
+    <Compile Include="../Game.UI/**/*.cs" Exclude="../Game.UI/obj/**;../Game.UI/bin/**" Link="Shared/UI/%(RecursiveDir)%(Filename)%(Extension)" />
+    <AndroidAsset Include="../../assets/generated/font.png" Link="Assets/Content/font.png" />
+    <AndroidAsset Include="../../assets/generated/font.json" Link="Assets/Content/font.json" />
+    <AndroidAsset Include="../../assets/generated/display.png" Link="Assets/Content/display.png" />
+    <AndroidAsset Include="../../assets/generated/display.json" Link="Assets/Content/display.json" />
+    <AndroidAsset Include="../../assets/imported/**/*" Link="Assets/Content/imported/%(RecursiveDir)%(Filename)%(Extension)" />
+    <AndroidAsset Include="../../licenses/*" Link="Assets/licenses/%(Filename)%(Extension)" />
+  </ItemGroup>
+</Project>

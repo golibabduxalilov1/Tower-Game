@@ -1,0 +1,1131 @@
+TEXNIK TOPSHIRIQ
+Android va Windows uchun Tower Defense o‘yini
+C# + MonoGame / Google Play + Steam
+To‘liq loyiha talablari • 38 bo‘lim
+20-oktabr 2026
+Ushbu hujjat faqat kod orqali yaratiladigan original 2D Tower Defense o‘yinining ishlab chiqish talablarini
+belgilaydi. Tezlik, balans va barqarorlik amaliy sinovlarda tasdiqlanadi.
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+1 / 19
+
+1. Loyiha maqsadi
+Fieldrunners uslubidagi erkin yo‘l qurish mexanikasiga ega, mustaqil nomi va dizayni bo‘lgan 2D Tower
+Defense o‘yini yaratilsin.
+O‘yinchi mudofaa minoralarini joylashtirib, dushmanlarning yurish yo‘lini uzaytiradi va ularni chiqish nuqtasiga
+yetmasdan yo‘q qiladi.
+Yakuniy mahsulot:
+• Android telefon va planshetlarda ishlaydi;
+ 
+• Windows kompyuterlarida ishlaydi;
+ 
+• Google Play va Steam orqali tarqatishga tayyorlanadi;
+ 
+• asosiy o‘yin jarayoni internetsiz ishlaydi;
+ 
+• barcha asosiy vizual elementlar kod orqali yaratiladi;
+ 
+• sensor, sichqoncha va klaviatura boshqaruvini qo‘llaydi;
+ 
+• o‘yin holatini xavfsiz saqlaydi va tiklaydi.
+ 
+Original Fieldrunners’ning nomi, logotipi, grafikasi, ovozlari va xaritalari loyiha resurslari sifatida ishlatilmaydi.
+2. Mahsulot chegarasi
+Birinchi to‘liq nashrga quyidagilar kiradi:
+Tarkib
+Hajm
+Kampaniya xaritalari
+8
+Minora turlari
+8
+Har bir minoraning darajasi
+3
+Oddiy dushman turlari
+8
+Boss turlari
+3
+Qiyinlik darajalari
+3
+O‘yin rejimlari
+Classic, Extended, Endless
+Classic va Extended
+Har xaritada 100 to‘lqin
+Interfeys tillari
+O‘zbek va ingliz
+Mahalliy o‘yin profili
+1
+Har bir rejim uchun rekordlar
+Xarita va qiyinlik kesimida
+Davom ettiriladigan jang
+1 faol saqlash
+Birinchi nashrda multiplayer, chat, foydalanuvchi akkaunti, reklama, ichki xaridlar va ommaviy reyting serveri
+bo‘lmaydi.
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+2 / 19
+ANDROID + WINDOWS
+C# + MONOGAME
+
+Google Play va Steam nashrlari bir martalik xarid modeliga mo‘ljallanadi. Yakuniy narx nashr bosqichida
+belgilanadi.
+3. “Faqat kod” talabi
+O‘yinni yaratish uchun sahnalarni vizual muharrirda qo‘lda yig‘ish talab qilinmasin.
+Kod orqali yaratiladi:
+• xarita yuzasi va kataklar;
+ 
+• to‘siqlar va bezaklar;
+ 
+• minoralar va ularning daraja farqlari;
+ 
+• dushmanlar va animatsiyalar;
+ 
+• o‘q, raketa, portlash, tutun va elektr effektlari;
+ 
+• menyular, tugmalar va ko‘rsatkichlar;
+ 
+• oddiy tovush effektlari;
+ 
+• ilova ikonkasining asosiy grafikasi.
+ 
+Matn uchun Unicode’ni qo‘llaydigan, tarqatish litsenziyasi mos shrift ishlatiladi. Shrift litsenziyasi loyiha bilan
+saqlanadi. Bu qo‘lda grafik chizish talabini keltirib chiqarmaydi.
+Murakkab shakllar har kadrda qayta yaratilmaydi: dastur ishga tushganda yoki yig‘ish vaqtida teksturalarga
+aylantirilib, qayta ishlatiladi.
+4. Texnologik tuzilma
+Qism
+Tanlov
+Dasturlash tili
+C#
+O‘yin freymvorki
+MonoGame
+Windows nashri
+Windows x64
+Android nashri
+ARM64
+O‘yin ma’lumotlari
+JSON yoki kuchli tiplashtirilgan ma’lumot sinflari
+Saqlash
+Versiyalangan JSON
+Asosiy grafika
+SpriteBatch va oldindan yaratilgan teksturalar
+Ovoz
+Kod orqali yaratilgan yoki yig‘ishda hosil qilingan ovoz fayllari
+Testlar
+O‘yin yadrosi uchun avtomatlashtirilgan testlar
+Versiya nazorati
+Git
+MonoGame, .NET va Android vositalarining o‘zaro mos, qo‘llab-quvvatlanadigan versiyalari boshlang‘ich
+texnik sinovda tanlanadi va loyiha bo‘yicha mahkamlanadi.
+Tasodifiy kutubxonalar qo‘shilmaydi. Har bir tashqi bog‘liqlikning maqsadi, versiyasi va litsenziyasi qayd
+etiladi.
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+3 / 19
+ANDROID + WINDOWS
+C# + MONOGAME
+
+5. Arxitektura
+Loyiha quyidagi qismlarga ajratiladi:
+Modul
+Vazifasi
+Game.Core
+O‘yin qoidalari, jang, iqtisod va holatlar
+Game.Content
+Xaritalar, minoralar, dushmanlar va to‘lqin sozlamalari
+Game.Rendering
+Chizish, kamera, animatsiya va effektlar
+Game.UI
+Menyu, HUD, sozlamalar va yordam
+Game.Audio
+Musiqa va tovushlar
+Game.Persistence
+Saqlash, tiklash va migratsiya
+Game.Platform
+Platforma imkoniyatlari uchun umumiy interfeyslar
+Game.Android
+Android ishga tushirish va hayot sikli
+Game.Windows
+Windows ishga tushirish va oyna boshqaruvi
+Game.Tests
+Mantiqiy va integratsion testlar
+Game.Tools
+Kontent tekshirish va resurs yaratish vositalari
+O‘yin yadrosi MonoGame’ning chizish va kiritish tizimlariga bog‘lanmasin. Uni oynasiz avtomatik test qilish
+mumkin bo‘lsin.
+Platformaga xos kod Android va Windows loyihalarida saqlansin.
+6. O‘yin holatlari
+O‘yin holatlari:
+1. Boshlang‘ich yuklanish.
+ 
+2. Asosiy menyu.
+ 
+3. Xarita tanlash.
+ 
+4. Rejim va qiyinlik tanlash.
+ 
+5. Jangga tayyorgarlik.
+ 
+6. Faol to‘lqin.
+ 
+7. To‘lqinlar oralig‘i.
+ 
+8. Pauza.
+ 
+9. G‘alaba.
+ 
+10. Mag‘lubiyat.
+ 
+11. Saqlashni tiklash xatosi.
+ 
+Har bir holatga kirish va undan chiqish aniq boshqariladi. Bir vaqtning o‘zida ikki jang yoki ikki natija oynasi
+ochilmasin.
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+4 / 19
+ANDROID + WINDOWS
+C# + MONOGAME
+
+7. Asosiy o‘yin qoidalari
+Parametr
+Boshlang‘ich qiymat
+Standart xarita
+24 × 16 katak
+Hayot
+20
+Normal rejimdagi boshlang‘ich pul
+150
+Minora egallaydigan joy
+1 katak
+Keyingi to‘lqingacha tanaffus
+10 soniya
+Tezlik
+1× va 2×
+Oddiy dushman o‘tkazilsa
+-1 hayot
+Boss o‘tkazilsa
+-3 hayot
+Birinchi to‘lqin o‘yinchi “Boshlash” tugmasini bosmaguncha kelmaydi.
+Tayyorgarlik vaqtida minora qurish, sotish va kuchaytirish mumkin.
+Hayot 0 ga tushsa, jang darhol mag‘lubiyat bilan tugaydi.
+100-to‘lqin tugab, hayot musbat qolsa, Classic va Extended rejimlarida g‘alaba beriladi.
+8. Xarita modeli
+Har bir xarita quyidagilarni saqlaydi:
+• doimiy identifikator;
+ 
+• nom va tavsif;
+ 
+• o‘lchamlar;
+ 
+• kataklar;
+ 
+• kirishlar;
+ 
+• chiqishlar;
+ 
+• kirish-chiqish bog‘lanishlari;
+ 
+• havo yo‘nalishlari;
+ 
+• rels yo‘nalishlari;
+ 
+• mavjud minoralar;
+ 
+• dushman turlari;
+ 
+• to‘lqin sozlamalari;
+ 
+• vizual mavzu;
+ 
+• ochilish sharti.
+ 
+Katak turlari:
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+5 / 19
+ANDROID + WINDOWS
+C# + MONOGAME
+
+Tur
+Yer dushmani
+Qurilish
+Oddiy yer
+Yuradi
+Mumkin
+Faqat yo‘l
+Yuradi
+Mumkin emas
+Qoya
+Yurmaydi
+Mumkin emas
+Qurilish maydonchasi
+Yurmaydi
+Mumkin
+Kirish
+Yuradi
+Mumkin emas
+Chiqish
+Yuradi
+Mumkin emas
+Rels
+Faqat rels birligi
+Mumkin emas
+Xaritadagi bezaklar o‘yin qoidalarini yashirin ravishda o‘zgartirmasin.
+9. Sakkizta xarita
+Xaritalar original sxemalar asosida, qo‘lda yozilgan ma’lumotlar orqali yaratiladi.
+Xarita
+Tuzilishi
+Asosiy strategiya
+Yashil vodiy
+Bitta yer va havo yo‘nalishi
+Labirint qurishni o‘rganish
+Ikki oqim
+Kesishuvchi ikki yo‘nalish
+Umumiy hujum hududi yaratish
+Qum qal’asi
+Ikki yer kirishi va alohida havo yo‘li
+Mudofaani taqsimlash
+Kristall kon
+Yer yo‘li va bitta rels
+Harakat turlarini birga qamrash
+Tosh darvozalar
+Oldindan joylashtirilgan to‘siqlar
+Tor yo‘laklardan foydalanish
+Muz markazi
+To‘rt tomondan markazga hujum
+Qisqa yo‘llarni himoyalash
+Botqoq chegarasi
+Cheklangan qurilish joylari va rels
+Joy tanlash
+Vulkan halqasi
+Yer, havo va ikkita rels
+Bir nechta xavfni boshqarish
+Har bir xarita uchun qurilish kataklari, kirishlar va yo‘nalishlarning aniq koordinatalari kontent faylida
+belgilanadi.
+Xarita yuklanganda avtomatik tekshiruv:
+• barcha majburiy kirishlarda yo‘l mavjud;
+ 
+• kirish va chiqishlar xarita ichida;
+ 
+• rels yo‘llari uzilmagan;
+ 
+• havo yo‘llari yaroqli;
+ 
+• mavjud minoralar barcha majburiy dushman turlariga hujum qila oladi.
+ 
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+6 / 19
+ANDROID + WINDOWS
+C# + MONOGAME
+
+10. Qurilish qoidalari
+Minora qurishdan oldin:
+1. Katak qurilishga mosligi.
+ 
+2. Katak bo‘shligi.
+ 
+3. Pul yetarliligi.
+ 
+4. Yer dushmani katakni band qilmaganligi.
+ 
+5. Yer dushmanining joriy harakat bo‘lagi shu katakka kirmasligi.
+ 
+6. Barcha majburiy yo‘llar saqlanishi.
+ 
+Qurilish katagi vaqtincha yopilib, yo‘l tekshiruvi bajariladi.
+Tekshiruv muvaffaqiyatsiz bo‘lsa:
+• o‘yin holati o‘zgarmaydi;
+ 
+• pul sarflanmaydi;
+ 
+• sabab tushunarli ko‘rsatiladi.
+ 
+Qurilish muvaffaqiyatli bo‘lsa, pul yechish va minora qo‘shish bitta yaxlit operatsiya sifatida bajariladi.
+11. Yo‘l topish
+Yer dushmanlari to‘rt yo‘nalishda yuradi. Diagonal harakat yo‘q.
+Har bir chiqish uchun teskari BFS masofa xaritasi yaratiladi.
+Dushman:
+• o‘z chiqishiga mos masofa xaritasidan foydalanadi;
+ 
+• masofani kamaytiradigan katakka yuradi;
+ 
+• teng variantlarda avval joriy yo‘nalishni davom ettiradi;
+ 
+• qolgan tengliklarda doimiy yo‘nalish tartibidan foydalanadi.
+ 
+Yo‘l faqat xaritaning yurish imkoniyati o‘zgarganda qayta hisoblanadi.
+Dushman katak markazlari orasida silliq harakatlanadi. Yo‘l o‘zgarganda teleportatsiya qilinmaydi.
+Yer birliklari bir-birini fizik to‘smasin. Vizual ustma-ust tushishni kamaytirish uchun kichik chizish siljishlari
+ishlatilishi mumkin.
+Havo va rels birliklari belgilangan yo‘l nuqtalari bo‘ylab yuradi.
+12. Minora tizimi
+Har bir minora ma’lumotlari:
+• tur identifikatori;
+ 
+• koordinata;
+ 
+• daraja;
+ 
+• umumiy sarflangan pul;
+ 
+• hujum radiusi;
+ 
+• minimal hujum radiusi;
+ 
+• zarar;
+ 
+• qayta otish oralig‘i;
+ 
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+7 / 19
+ANDROID + WINDOWS
+C# + MONOGAME
+
+• nishon turlari;
+ 
+• hujum turi;
+ 
+• maxsus ta’sir;
+ 
+• hujum taymeri;
+ 
+• joriy nishon;
+ 
+• nishon ustuvorligi.
+ 
+Birinchi darajadagi boshlang‘ich balans:
+Minora
+Narx
+Zarar
+Oraliq
+Radius
+Nishon
+Gatling
+40
+8
+0,25 s
+3
+Yer, havo, rels
+Goo
+55
+0
+0,8 s
+3
+Yer, havo
+Missile
+100
+45
+1,5 s
+4,5
+Yer, havo, rels
+Tesla
+150
+70
+1 s
+3,5
+Yer, havo, rels
+Flame
+120
+12
+0,2 s
+2,5
+Yer, rels
+Mortar
+140
+90
+2,5 s
+3-6
+Yer, rels
+Laser
+170
+45
+0,8 s
+5
+Yer, havo, rels
+Ice
+70
+4
+1 s
+3
+Yer, havo
+Bu qiymatlar sinov uchun boshlang‘ich balans bo‘lib, yakuniy deb hisoblanmaydi.
+13. Maxsus hujumlar
+• Gatling: bitta nishonga tezkor hujum.
+ 
+• Goo: 2 soniyaga 35% sekinlashtirish.
+ 
+• Missile: nishonning yer yoki havo qatlamidagi 1 katak radiusga portlash zarari.
+ 
+• Tesla: asosiy nishondan 1,5 katak ichidagi yana ikki mos nishonga 50% va 25% zarar bilan sakrash.
+ 
+• Flame: 60° konusdagi mos nishonlarga zarar.
+ 
+• Mortar: nishonning otish paytidagi joyiga portlash; radius 1,5 katak.
+ 
+• Laser: eni 0,35 katak bo‘lgan chiziq bo‘ylab mos nishonlarga zarar.
+ 
+• Ice: 2,5 soniyaga 25% sekinlashtirish va kichik zarar.
+ 
+Tesla bitta hujumda bir dushmanga takror sakramaydi.
+Flame va Laser bir hujumda bitta dushmanga bir marta ta’sir qiladi.
+Ushbu loyihada minoralar va dekoratsiyalar o‘qlarni to‘smaydi.
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+8 / 19
+ANDROID + WINDOWS
+C# + MONOGAME
+
+14. Kuchaytirish va sotish
+Daraja
+Qo‘shimcha xarajat
+Zarar koeffitsiyenti
+Otish oralig‘i
+Radius o‘sishi
+1
+Asosiy narx
+1×
+1×
+0
+2
+Asosiy narxning 75%i
+1,7×
+0,9×
++0,25
+3
+Asosiy narxning 125%i
+2,8×
+0,8×
++0,5
+Qiymatlar birinchi darajaga nisbatan hisoblanadi.
+Goo sekinlashtirishi: 35%, 45%, 55%.
+Ice sekinlashtirishi: 25%, 35%, 45%.
+Kuchaytirish joriy hujum taymerini qayta boshlamaydi va bepul qo‘shimcha zarba bermaydi.
+Sotish qiymati: floor(umumiy sarflangan pul × 0,70).
+Tayyorgarlikning birinchi to‘lqin boshlanmagan davrida sotish 100% qaytaradi. Birinchi to‘lqin boshlanganidan
+keyin 70% qoida amal qiladi.
+15. Nishon tanlash
+Standart rejim: chiqishga yetishiga eng kam vaqt qolgan dushman.
+Hisob: Qolgan yo‘l uzunligi ÷ joriy tezlik.
+Qo‘shimcha ustuvorliklar:
+• eng yaqin;
+ 
+• eng kuchli;
+ 
+• eng zaif;
+ 
+• chiqishga eng yaqin.
+ 
+Tenglikda doimiy dushman identifikatori ishlatiladi.
+Minora mavjud nishoni tirik, mos va radiusda bo‘lsa, uni ushlab turadi.
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+9 / 19
+ANDROID + WINDOWS
+C# + MONOGAME
+
+16. Dushmanlar
+Tur
+Bazaviy sog‘liq
+Tezlik, katak/s
+Pul
+Xususiyat
+Piyoda
+40
+1,2
+4
+Oddiy
+Yuguruvchi
+28
+2,1
+4
+Tez
+Og‘ir askar
+110
+0,8
+8
+Chidamli
+Mototsikl
+70
+2,5
+7
+Juda tez
+Tank
+380
+0,55
+20
+Zirhli
+Vertolyot
+140
+1,6
+12
+Havo
+Samolyot
+95
+2,8
+10
+Tez havo
+Rels aravasi
+220
+1,4
+14
+O‘zgarmas yo‘l
+Tank Gatling va Flame zararini 20% kamaytiradi.
+Dushmanlarning yashirin qarshiliklari bo‘lmasin. Qarshiliklar yordam oynasida ko‘rsatiladi.
+17. Bosslar
+Boss
+Bazaviy sog‘liq
+Tezlik
+Xususiyat
+Og‘ir tank
+1500
+0,45
+Gatling va Flame’dan 25% kam zarar
+Havo qal’asi
+1200
+0,7
+Havo yo‘lidan yuradi
+Rels kolossi
+1800
+0,6
+Faqat relsli xaritalarda
+Har bir bossning mukofoti 100 pul.
+Boss sekinlashtirishning yarmi bilan ta’sirlanadi. Rels kolossi sekinlashmaydi.
+Har 10-to‘lqinda xarita qo‘llaydigan bosslardan biri keladi. Boss kelishi oldindan interfeysda ko‘rsatiladi.
+18. Zarar va ta’sirlar
+Yakuniy zarar: Bazaviy zarba × daraja koeffitsiyenti × qarshilik koeffitsiyenti.
+Sog‘liq 0 ga tushganda dushman darhol o‘lik deb belgilanadi. Mukofot bir marta beriladi.
+Bir nechta sekinlashtirish bir vaqtda qo‘llansa, faqat eng kuchlisi ishlaydi. Har birining muddati alohida
+hisoblanadi.
+Yo‘naltirilgan snaryadning nishoni o‘lsa:
+• oddiy snaryad bekor qilinadi;
+ 
+• Mortar belgilangan joyga tushadi;
+ 
+• faol portlash allaqachon qayd etilgan zararini takrorlamaydi.
+ 
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+10 / 19
+ANDROID + WINDOWS
+C# + MONOGAME
+
+Chiqishga yetib olib tashlangan dushmanga keyin kelgan snaryad mukofot bermaydi.
+19. To‘lqin tizimi
+Har bir kampaniya xaritasida 100 ta to‘lqin ta’rifi saqlanadi.
+Har bir to‘lqin:
+• dushman turi;
+ 
+• soni;
+ 
+• kirish identifikatori;
+ 
+• boshlanish kechikishi;
+ 
+• chiqarish oralig‘i;
+ 
+• sog‘liq koeffitsiyenti;
+ 
+• boss belgisi;
+ 
+• yakun mukofotini belgilaydi.
+ 
+Kampaniya to‘lqinlari versiyalangan va takrorlanadigan bo‘ladi. O‘yin har safar tasodifan boshqa qiyinlikka
+aylanmaydi.
+Dastlabki kontentni yaratish uchun formula ishlatilishi mumkin:
+N = min(60, 8 + floor(0,6 × w)).
+H = (1 + 0,075 × (w - 1)) × 1,012^(w - 1).
+T = max(0,22; 0,9 - 0,006 × w).
+Bu formulalar orqali yaratilgan kampaniya to‘lqinlari keyin alohida sinovdan o‘tkazilib, kontent fayliga yoziladi.
+To‘lqin tugashi uchun:
+• chiqarish navbati bo‘sh;
+ 
+• tirik yoki chiqishga ketayotgan dushman qolmagan bo‘lishi kerak.
+ 
+Barcha kirishlarga taqsimlangan dushmanlar umumiy soni N bo‘ladi; har bir kirish uchun N qayta yaratilmaydi.
+20. Endless rejimi
+100-to‘lqindan keyin dushman soni cheklangan holda qoladi, sog‘liq o‘sishi davom etadi.
+Endless’da:
+• bosslar har 10 to‘lqinda;
+ 
+• dushmanlar soni bir to‘lqinda ko‘pi bilan 60;
+ 
+• hisoblash qiymatlari cheksiz o‘sib overflow bermasligi kerak;
+ 
+• ko‘rsatiladigan katta sonlar qisqartiriladi;
+ 
+• urug‘ va generator holati saqlanadi.
+ 
+Yakuniy maqsad - eng uzoq to‘lqin va eng yuqori ball.
+21. Iqtisod va ball
+Dushman mukofoti uning bazaviy turiga bog‘liq. Sog‘liq o‘sishi bilan avtomatik oshmaydi.
+To‘lqin mukofoti: 10 + floor(w / 5).
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+11 / 19
+ANDROID + WINDOWS
+C# + MONOGAME
+
+Keyingi to‘lqinni erta chaqirish pul bermaydi.
+Ball:
+• dushman uchun: pul mukofoti × 10;
+ 
+• tugatilgan to‘lqin uchun: 100;
+ 
+• g‘alabada qolgan har bir hayot uchun: 500.
+ 
+Pul, ball va yulduzlar alohida ma’lumotlardir.
+22. Qiyinlik va rejimlar
+Qiyinlik
+Sog‘liq
+Boshlang‘ich pul
+Easy
+0,8×
+180
+Normal
+1×
+150
+Hard
+1,35×
+130
+Classic: asosiy to‘rtta minora.
+Extended: asosiy to‘rtta va xaritaga mos ikkita maxsus minora.
+Endless: shu xaritaning Extended qurol to‘plami.
+Har bir xaritadagi maxsus minoralar kontentda belgilanadi. Sakkizta xarita bo‘ylab barcha sakkiz minora
+ishlatilishi kerak.
+23. Progress va natijalar
+Birinchi xarita ochiq.
+Oldingi xaritada 50-to‘lqin tugatilsa, keyingi xarita ochiladi.
+Shu xaritada Classic yengilsa, Extended va Endless ochiladi.
+G‘alaba yulduzlari:
+• 3 yulduz - 20 hayot;
+ 
+• 2 yulduz - 10-19 hayot;
+ 
+• 1 yulduz - 1-9 hayot.
+ 
+Yulduzlar jangovar ustunlik bermaydi.
+Rekordlar xarita, rejim va qiyinlik bo‘yicha alohida saqlanadi.
+24. Android boshqaruvi
+• Pastki paneldan minora tanlash.
+ 
+• Katakka tegib joylashuvni ko‘rish.
+ 
+• Tasdiqlash orqali qurish.
+ 
+• Bo‘sh joy yoki bekor qilish tugmasi orqali tanlovdan chiqish.
+ 
+• Minoraga tegib ma’lumot, kuchaytirish va sotish menyusini ochish.
+ 
+• Ikki barmoq bilan kattalashtirish.
+ 
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+12 / 19
+ANDROID + WINDOWS
+C# + MONOGAME
+
+• Kamera kattalashtirilganda ikki barmoq bilan siljitish.
+ 
+• Android “Orqaga” amali avval menyuni yopadi, keyin pauza oynasini ochadi.
+ 
+Asosiy sensor tugmalar kamida 48 dp bosish maydoniga ega bo‘lsin.
+O‘yin gorizontal holatda ishlaydi. Ekran kesiklari va tizim panellari hisobga olinadi.
+25. Windows boshqaruvi
+• Chap tugma - tanlash va tasdiqlash.
+ 
+• O‘ng tugma yoki Esc - bekor qilish.
+ 
+• Sichqoncha g‘ildiragi - kattalashtirish.
+ 
+• O‘rta tugma bilan surish - kamerani siljitish.
+ 
+• Space - pauza.
+ 
+• 1-6 - mavjud minora tanlash.
+ 
+• U - tanlangan minorani kuchaytirish.
+ 
+• Delete - sotishni tasdiqlash oynasi.
+ 
+• F - 1× va 2× almashtirish.
+ 
+• Esc - pauza yoki joriy oynani yopish.
+ 
+Klaviatura buyruqlari sozlamalarda qayta tayinlanishi mumkin bo‘lsin.
+26. Interfeys
+Jang ekranida:
+• pul;
+ 
+• hayot;
+ 
+• to‘lqin raqami;
+ 
+• qolgan dushmanlar;
+ 
+• keyingi to‘lqin turi;
+ 
+• tezlik;
+ 
+• pauza;
+ 
+• mavjud minoralar;
+ 
+• tanlangan minora ma’lumoti ko‘rsatiladi.
+ 
+Minora oynasi:
+• nom;
+ 
+• daraja;
+ 
+• zarar;
+ 
+• otish tezligi;
+ 
+• radius;
+ 
+• maxsus ta’sir;
+ 
+• keyingi daraja narxi;
+ 
+• sotish qiymati;
+ 
+• nishon ustuvorligi.
+ 
+Xato xabarlari qisqa va aniq bo‘ladi: “Pul yetarli emas”, “Yo‘l yopilib qoladi”, “Bu yerga qurib bo‘lmaydi”.
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+13 / 19
+ANDROID + WINDOWS
+C# + MONOGAME
+
+Texnik xatolar va ichki fayl yo‘llari oddiy o‘yin ekranida ko‘rsatilmaydi.
+27. Grafik uslub
+Uslub - silliq, geometrik va yuqoridan ko‘rinadigan 2D.
+Talablar:
+• dushman va minora turlari siluet orqali farqlansin;
+ 
+• rang yagona farqlash vositasi bo‘lmasin;
+ 
+• darajalar qurol shakli va detallar bilan ajralsin;
+ 
+• hujum radiusi tanlanganida ko‘rinsin;
+ 
+• yo‘l ko‘rsatish rejimi mavjud bo‘lsin;
+ 
+• sog‘liq chiziqlari o‘qiladigan bo‘lsin;
+ 
+• zarba effektlari dushmanlarni yashirib yubormasin.
+ 
+Kamera silkinishi va kuchli chaqnashlarni o‘chirish mumkin bo‘lsin.
+Grafika 16:9, 16:10 va keng mobil ekranlarda cho‘zilmasin.
+28. Ovoz
+Kod orqali qisqa effektlar yaratiladi:
+• Gatling;
+ 
+• raketa;
+ 
+• portlash;
+ 
+• elektr;
+ 
+• olov;
+ 
+• qurilish;
+ 
+• kuchaytirish;
+ 
+• xato;
+ 
+• to‘lqin boshlanishi;
+ 
+• g‘alaba va mag‘lubiyat.
+ 
+Bir xil tovushlar haddan tashqari qo‘shilib ketmasligi uchun bir vaqtdagi ovozlar soni cheklanadi.
+Sozlamalar:
+• umumiy ovoz;
+ 
+• musiqa;
+ 
+• effektlar;
+ 
+• to‘liq o‘chirish.
+ 
+Ilova orqa fonga o‘tganda ovoz to‘xtaydi.
+29. Saqlash tizimi
+Alohida fayllar:
+• sozlamalar;
+ 
+• profil va progress;
+ 
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+14 / 19
+ANDROID + WINDOWS
+C# + MONOGAME
+
+• faol jang;
+ 
+• zaxira nusxa.
+ 
+Saqlash vaqtida avval vaqtinchalik fayl yoziladi, tekshiriladi, keyin asosiy fayl bilan almashtiriladi.
+Har bir faylda:
+• format versiyasi;
+ 
+• dastur versiyasi;
+ 
+• vaqt belgisi;
+ 
+• ma’lumot;
+ 
+• buzilishni aniqlash uchun nazorat qiymati bo‘ladi.
+ 
+Nazorat qiymati firibgarlikka qarshi mutlaq himoya sifatida ko‘rsatilmaydi.
+Faol jang to‘lqin yakunida, pauzadan chiqishda va “Saqlash va chiqish”da saqlanadi.
+Android orqa fonga o‘tganda saqlashga urinish qilinadi. Tizim jarayonni kutilmaganda to‘xtatsa, oxirgi
+muvaffaqiyatli nuqta tiklanadi.
+30. Xavfsizlik
+• Faqat zarur platforma ruxsatlari so‘raladi.
+ 
+• O‘yin fayllari ilovaning shaxsiy katalogida saqlanadi.
+ 
+• Maxfiy kalitlar manba kodiga va Git’ga qo‘shilmaydi.
+ 
+• Imzolash kalitlari alohida, zaxira nusxasi bilan saqlanadi.
+ 
+• Tashqi ma’lumot o‘qilganda hajm va qiymat chegaralari tekshiriladi.
+ 
+• Saqlashdan kod bajarish imkoniyati bo‘lmaydi.
+ 
+• Xato jurnallariga shaxsiy ma’lumotlar yozilmaydi.
+ 
+• Yangilanishlar do‘konlar orqali tarqatiladi.
+ 
+Offline o‘yinda mahalliy saqlashni tajribali foydalanuvchidan mutlaq himoyalash maqsad qilinmaydi. Asosiy
+vazifa - buzilish, tasodifiy yo‘qotish va noto‘g‘ri qiymatlardan himoyalanish.
+31. Ishlash tezligi
+Maqsadli kadr tezligi: 60 FPS. Past quvvatli qurilmalar uchun 30 FPS rejimi bo‘ladi.
+Hisoblash qadami - 1/60 soniya. Chizish tezligi o‘yin qoidalarini o‘zgartirmaydi.
+2× rejimda hisoblash qadamlari ikki baravar ko‘p bajariladi.
+Optimallashtirish:
+• dushman va snaryadlar uchun qayta foydalaniladigan obyektlar;
+ 
+• yo‘l xaritasini faqat zarur paytda hisoblash;
+ 
+• nishon topish uchun fazoviy kataklash;
+ 
+• effektlar soniga limit;
+ 
+• takroriy teksturalarni qayta ishlatish;
+ 
+• asosiy siklda keraksiz xotira ajratmaslik;
+ 
+• ko‘rinmaydigan bezaklarni chizmaslik.
+ 
+Sinov yuklamasi:
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+15 / 19
+ANDROID + WINDOWS
+C# + MONOGAME
+
+• 300 faol dushman;
+ 
+• 200 minora;
+ 
+• 600 snaryad yoki effekt;
+ 
+• 2× tezlik.
+ 
+Bu yuklama uchun natijalar tanlangan haqiqiy qurilmalarda o‘lchanadi. “Barcha telefonlarda 60 FPS” kabi
+tekshirib bo‘lmaydigan kafolat berilmaydi.
+32. Barqarorlik
+Quyidagilar to‘g‘ri ishlashi kerak:
+• telefon ekranini qulflash va qaytish;
+ 
+• boshqa ilovaga o‘tish;
+ 
+• ovoz chiqishi almashishi;
+ 
+• internet uzilishi;
+ 
+• Steam vaqtincha mavjud bo‘lmasligi;
+ 
+• oyna o‘lchami o‘zgarishi;
+ 
+• to‘liq ekran almashishi;
+ 
+• buzilgan saqlash fayli;
+ 
+• disk joyi yetishmasligi.
+ 
+Saqlash xatosida o‘yinchi xabardor qilinadi. Mavjud yaroqli saqlash bekor qilinmaydi.
+33. Google Play nashri
+Android yig‘masi:
+• release rejimida;
+ 
+• ARM64;
+ 
+• imzolangan AAB;
+ 
+• nashr paytidagi amaldagi target API va boshqa Play talablariga mos;
+ 
+• kerakli native kutubxonalar mosligi tekshirilgan bo‘lishi kerak.
+ 
+Do‘kon materiallari:
+• original nom;
+ 
+• ikonka;
+ 
+• tavsif;
+ 
+• skrinshotlar;
+ 
+• yosh toifasi savollari;
+ 
+• ma’lumotlardan foydalanish deklaratsiyasi;
+ 
+• maxfiylik siyosati;
+ 
+• yordam uchun aloqa manzili.
+ 
+Google Play akkaunti va nashrga oid yakuniy amallar loyiha egasi tomonidan tasdiqlanadi.
+34. Steam nashri
+Windows yig‘masi oddiy foydalanuvchi huquqlari bilan ishlasin.
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+16 / 19
+ANDROID + WINDOWS
+C# + MONOGAME
+
+Steam integratsiyasi alohida modulda:
+• yutuqlar;
+ 
+• Steam Cloud uchun profil va progress;
+ 
+• tilni dastlabki tanlashga yordam.
+ 
+Faol jang Android va Windows orasida sinxronlashtirilmaydi. Steam Cloud faqat Steam nashri uchun
+ishlatiladi.
+Steam xizmatlari ishlamasa, asosiy offline jang ishlashda davom etadi.
+Do‘kon uchun kapsula tasvirlari, skrinshotlar, tavsif, tizim talablari va yordam ma’lumotlari tayyorlanadi.
+35. Testlar
+Avtomatik testlar:
+• yo‘l mavjudligi;
+ 
+• oxirgi yo‘lni yopishga urinish;
+ 
+• dushmanni qamab qo‘yishga urinish;
+ 
+• pul yetishmasligi;
+ 
+• kuchaytirish qiymatlari;
+ 
+• sotish hisoblari;
+ 
+• zarar va qarshilik;
+ 
+• sekinlashtirish ustuvorligi;
+ 
+• bitta o‘limga bitta mukofot;
+ 
+• to‘lqin tugashi;
+ 
+• g‘alaba va mag‘lubiyat ustuvorligi;
+ 
+• saqlash va tiklash;
+ 
+• eski saqlash formatini ko‘chirish.
+ 
+Integratsion testlar:
+• bir xil seed va buyruqlar bilan takrorlanuvchi natija;
+ 
+• 1× va 2× rejimlar mantiqiy natijasining mosligi;
+ 
+• ketma-ket 100 to‘lqin;
+ 
+• uzoq Endless sinovi;
+ 
+• xaritalarni avtomatik tekshirish.
+ 
+Qo‘lda sinov:
+• barcha xaritalar;
+ 
+• barcha minoralar;
+ 
+• sensor va sichqoncha;
+ 
+• kichik va katta ekranlar;
+ 
+• kamida past, o‘rta va yuqori quvvatli Android qurilmalar;
+ 
+• integratsiyalashgan grafikaga ega Windows kompyuteri.
+ 
+36. Qabul qilish mezonlari
+Loyiha quyidagi shartlarda tayyor hisoblanadi:
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+17 / 19
+ANDROID + WINDOWS
+C# + MONOGAME
+
+1. Android va Windows release yig‘malari yaratiladi.
+ 
+2. Sakkizta xarita ochiladi va ishlaydi.
+ 
+3. Barcha minoralar uch darajada ishlaydi.
+ 
+4. Barcha dushman va bosslar ishlaydi.
+ 
+5. Classic, Extended va Endless ishlaydi.
+ 
+6. Saqlashdan davom ettirish tekshirilgan.
+ 
+7. O‘yin yo‘lni butunlay yopishga ruxsat bermaydi.
+ 
+8. Muhim testlar muvaffaqiyatli o‘tadi.
+ 
+9. Belgilangan qurilmalarda tezlik hisobotlari mavjud.
+ 
+10. Nashrni to‘sadigan xatolar yo‘q.
+ 
+11. Har bir xarita va qiyinlik yengish mumkinligi amaliy tekshirilgan.
+ 
+12. Do‘kon uchun kerakli yig‘malar va materiallar tayyor.
+ 
+Do‘kon tomonidan qabul qilinish alohida tashqi tekshiruv bo‘lib, faqat kod tayyorligi bilan kafolatlanmaydi.
+37. Ishlab chiqish bosqichlari
+A. Texnik asos
+Android va Windows’da oyna, chizish, sensor/sichqoncha, ovoz va saqlash ishlashi tekshiriladi.
+B. O‘ynaladigan namuna
+Bitta xarita, to‘rtta minora, uchta dushman va o‘nta to‘lqin yaratiladi.
+C. Asosiy mantiq
+Yo‘l topish, iqtisod, kuchaytirish, maxsus hujumlar, pauza va saqlash yakunlanadi.
+D. To‘liq kontent
+Sakkizta xarita, sakkizta minora, barcha dushmanlar, bosslar va rejimlar qo‘shiladi.
+E. Interfeys va ko‘rinish
+Grafika, animatsiya, tovush, tillar, yordam va sozlamalar yakunlanadi.
+F. Balans va optimallashtirish
+Haqiqiy qurilmalarda test, profil o‘lchash va tuzatishlar bajariladi.
+G. Do‘konlarga tayyorlash
+Release yig‘malari, Steam integratsiyasi, ikonka, skrinshot va hujjatlar tayyorlanadi.
+Har bosqichning natijasi ishlaydigan yig‘ma bilan tekshiriladi.
+38. Yakuniy topshiriladigan materiallar
+• To‘liq manba kod.
+ 
+• Android va Windows loyiha fayllari.
+ 
+• Kontent va balans ma’lumotlari.
+ 
+• Kod orqali resurs yaratish vositalari.
+ 
+• Avtomatlashtirilgan testlar.
+ 
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+18 / 19
+ANDROID + WINDOWS
+C# + MONOGAME
+
+• Qurish va ishga tushirish yo‘riqnomasi.
+ 
+• Android release yig‘masi.
+ 
+• Windows release yig‘masi.
+ 
+• Ishlash tezligi va sinov hisoboti.
+ 
+• Uchinchi tomon litsenziyalari.
+ 
+• Nashrga tayyor do‘kon materiallari.
+ 
+• Ma’lum cheklovlar va qolgan xatolar ro‘yxati.
+ 
+Loyihaning asosiy tamoyili: bir xil o‘yin yadrosi, platformaga mos boshqaruv, original kod orqali yaratilgan
+ko‘rinish va o‘lchov bilan tasdiqlanadigan barqarorlik.
+TOWER DEFENSE  /  TEXNIK TOPSHIRIQ
+19 / 19
+ANDROID + WINDOWS
+C# + MONOGAME

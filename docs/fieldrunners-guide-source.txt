@@ -1,0 +1,306 @@
+--- PAGE 1 ---
+1-bet
+ FIELDRUNNERS 2 O‘yin mexanikasi va
+ texnik qo‘llanma
+Askarlar, minoralar, zarba va radius ko‘rsatkichlari, xarita kataklari, yo‘l topish, to‘lqinlar, iqtisodiyot va jang
+jarayoni. Android 1.8 bo‘yicha barcha qiymatlar mustaqil tasdiqlanmagan: ochiq qo‘llanmadan olingan
+ma’lumotlar va namuna qiymatlar alohida belgilangan.
+1. O‘yin qanday davom etadi?
+Dushmanlar xaritadagi kirish nuqtasidan chiqishga qarab yuradi. O‘yinchi pul evaziga mudofaa minoralarini
+o‘rnatadi, kuchaytiradi yoki sotadi. Minoralar nishonni avtomatik aniqlab hujum qiladi. O‘ldirilgan
+dushmanlardan pul va ochko olinadi; chiqishga yetib kelgan dushmanlar jonlarni kamaytiradi. Rejim shartlari
+bajarilganda g‘alaba, jonlar tugaganda mag‘lubiyat qayd etiladi.
+Asosiy sikl: LEVEL START → SPAWN → PATHFINDING → TOWER TARGETING → DAMAGE / STATUS → DEATH
+REWARD yoki ESCAPE PENALTY → NEXT WAVE / VICTORY / DEFEAT.
+2. Xarita, grid va katak kengligi
+Original o‘yinning barcha xaritalari yagona 16 × 12 katak ekanligi tasdiqlanmagan. Texnik maqolaga ko‘ra
+grid katagi eng katta piyoda birlik kengligidan biroz kattaroq; open / blocked holatlari mavjud. Grid bo‘yicha
+hisoblangan yo‘nalish harakatda silliqlashtiriladi. Aynan Android 1.8 uchun katakning piksel kengligi va har bir
+xaritaning qator-ustun soni tekshirilmagan.
+Parametr
+Faqat dasturlash namunasi
+Ustun / qator
+16 × 12
+Jami katak
+192
+Katak o‘lchami
+32 × 32 px
+Maydon
+512 × 384 px
+Koordinata
+(0,0) dan (15,11) gacha
+3. Askar (Enemy) ma’lumotlari
+Dushman obyektida HP, maxHP, tezlik, qarshilik/immunitet, joriy pozitsiya, yo‘nalish, status effektlari, pul
+mukofoti, ochko va maxsus qobiliyat mavjud bo‘lishi mumkin. Dushmanlarning aniq HP va tezlik qiymatlari
+Android 1.8 APK uchun tekshirilmagan.
+Dushman
+Vazifa / xususiyat
+Mukofot
+Runner
+Oddiy tez piyoda
+$1
+Super Trooper
+Bardoshli piyoda
+$2
+Medic
+Yaqin birliklarni davolaydi
+$1
+Toastmaster
+Olovga chidamli
+$1
+Stubborn Runner
+Sekinlashtirishga chidamli
+$1
+Hazmat
+Gas/Plague/Radiationga immunitet
+$1
+
+
+--- PAGE 2 ---
+2-bet
+Dushman
+Vazifa / xususiyat
+Mukofot
+Dirty Hog
+Tez mototsikl
+$2
+Scrambler
+Tez va kuchsiz transport
+$1
+Sidehacker
+O‘lganda piyoda tushiradi
+$2
+Baby Tank
+Tezroq tank
+$5
+Momma Tank
+Og‘ir bardoshli tank
+$10
+Heavy Transport
+O‘lganda 6 askar chiqaradi
+$2
+Jammed Jeep
+O‘lganda 4 askar chiqaradi
+$2
+V2 on a Truck
+O‘lganda portlashga sabab bo‘ladi
+$2
+Wingnut
+Tez uchuvchi birlik
+$2
+Huey Copter
+Vertolyot
+$2
+Louie Copter
+Og‘ir vertolyot
+$10
+Fokker
+Tez samolyot
+$2
+S-17 Skywhale
+Kuchli samolyot, o‘lganda portlaydi
+$5
+Bad Day Blimp
+Juda bardoshli dirijabl
+$40
+Elite birliklar qatoriga Red Baron, Flying Ace, Night Fokker, Zeppelin, Hindenburg, Lieutenant Sakai, Legendary
+Panzer va Legendary Tiger kiradi. Ular maxsus va odatda kuchliroq dushmanlardir.
+4. Tower Info: qurish narxi, DPS va radius
+DPS = bir soniyadagi nazariy zarar. L1/L2/L3 qiymatlari o‘yin qo‘llanmasidagi ma’lumotlarga asoslanadi, lekin
+Android 1.8 bilan birma-bir tekshirilmagan. Radius katak birligida.
+Tower
+Narx ($)
+DPS L1 / L2 / L3
+Radius
+Gatling
+5
+35 / 70 / 105
+2.5
+Machine Gun
+8
+70 / 100 / 130
+2.5
+Missile
+20
+75 / 150 / 225
+3.5
+Sonic Blast
+25
+112.5 / 225 / 337
+2.5
+Spark
+30
+160 / 320 / 480
+1
+Cannon
+30
+100 / 200 / 300
+3.5
+Hive
+35
+126 / 252 / 380
+3.5
+Laser
+40
+125 / 250 / 450
+2.5
+Gas
+40
+120 / 240 / 360
+2.5
+Napalm
+40
+240 / 480 / 720
+2.5
+Link
+45
+1000 / 2000 / 3000
+1
+
+
+--- PAGE 3 ---
+3-bet
+Tower
+Narx ($)
+DPS L1 / L2 / L3
+Radius
+Flamethrower
+50
+300 / 600 / 900
+2.5
+Plague
+55
+100 / 200 / 300
+2.5
+Radiation
+55
+100 / 200 / 300
+2.5
+Plasma
+60
+150 / 300 / 450
+3.5
+Zap
+60
+450 / 600 / 750
+2.5
+Tesla
+70
+700 / 1400 / 2100
+2.5
+Pyro
+90
+366 / 733 / 1100
+2.5
+Boom-Kin
+100
+600 / 1200 / 1800
+1.5
+Mine
+110
+1500 / 3000 / 4500
+1
+Railgun
+120
+665 / 1333 / 2000
+5.5
+Nuke
+120
+400 / 800 / 1200
+3.5
+Link bir necha minora o‘rtasidagi maxsus tizim sifatida ishlaydi; jadvaldagi DPSni mustaqil bitta minora zarari
+deb qabul qilmang. Sonic Blast hududga zarba, Spark ko‘p yo‘nalishli, Cannon chiziqli, Laser nurli, Napalm
+yonishli, Zap ko‘p nishonli, Mine mina joylashtirish, Railgun uzoq masofali zarba beradi.
+5. Slow va yordamchi minoralar
+Tower
+Narx
+Sekinlashtirish L1 / L2 / L3
+Radius
+Glue
+$10
+40% / 60% / 75%
+2.5
+Ice
+$15
+45% / 60% / 70%
+1.5
+Oil
+$20
+40% / 50% / 60%
+2.5
+Polymorph
+$20
+45% / 65% / 78%
+2.5
+Slow Link
+$30
+60% / 70% / 80%
+1
+Power
+$65
+Yaqin minoralarning zararini oshiradi
+1.5
+6. Minoralarni upgrade va sell qilish
+Minoralar L1 dan L3 gacha oshiriladi. Tesla misolida DPS 700 → 1400 → 2100; qurish $70, keyingi darajalarga
+o‘tish $50 va $50, umumiy xarajat $170. Sotish qiymatlari mos ravishda taxminan $52 / $90 / $127.
+Minoraning radiusi alohida ko‘rsatilmasa kuch o‘zgarishi radius o‘zgarishini anglatmaydi.
+7. Jang zarari qanday hisoblanadi?
+Soddalashtirilgan qoida: damage = DPS × vaqt × qarshilik koeffitsiyenti. Masalan 1400 HPga ega, qarshiligi
+yo‘q dushmanga 700 DPS uzluksiz tegsa 1400 / 700 = 2 soniyada o‘ladi. Haqiqiy natijaga otish oralig‘i,
+snaryad tezligi, nishon yo‘qolishi, hududiy effekt, immunitet va davolash ta’sir qiladi.
+Sekinlashtirish misoli (original raqam emas): tezlik 4 katak/soniya, 60% slow → yangi tezlik = 4 × (1−0.60) =
+1.6 katak/soniya. Demak dushman minora hududida uzoqroq qoladi.
+
+
+--- PAGE 4 ---
+4-bet
+8. Yo‘l topish: Dijkstra va Flow Field
+Xarita open/blocked kataklardan iborat. Chiqishdan boshlab Dijkstra usulida har bir katakning manzilga
+xarajati hisoblanadi. Keyin har katak eng yaxshi yo‘nalish vektorini oladi. Dushmanlar shu vektorlarga amal
+qiladi; qurilgan minora yo‘lni o‘zgartirsa flow field qayta hisoblanadi. Barcha chiqish yo‘llarini bloklaydigan
+minora joylashtirish rad etilishi kerak.
+Harakatda flow-field following, obstacle avoidance, separation, alignment va cohesion kabi kuchlar ishlatiladi.
+Natijada askarlar bir-biridan qochadi, buriladi va yo‘llarni tabiiyroq bosib o‘tadi.
+9. Wave va rejimlar
+Rounds/Survival: ko‘rsatilgan wave’larni o‘tish. Time Trial: vaqt cheklovi. Sudden Death: kuchli davomli hujum
+sharoiti. Puzzle: maxsus cheklangan vaziyatda himoya tuzish. Endless: talab bajarilgach davom etish. Har bir
+bosqichning aniq spawn jadvali, vaqt oralig‘i va HP o‘sish formulasi hali tasdiqlanmagan.
+10. Iqtisodiyot, jon va ochko
+Dushman o‘ldirilsa pul va score beriladi. Pul minora qurish, upgrade qilishga ketadi; sell qiymatning bir qismini
+qaytaradi. Chiqishga yetgan dushman jonlarni kamaytiradi. Bosqichdan tashqari coins va stars qo‘shimcha
+qurollar/itemlarni ochishda ishlatiladi. Boshlang‘ich pullar xaritaga qarab farqlanadi.
+11. Maxsus buyumlar
+Buyum
+Ta’siri
+Deep Freeze
+7 soniya taxminan 90% slow
+Smart Mine
+Teggan dushman HPning katta qismini kamaytiradi
+Fire Fountain
+Qisqa muddatli olov maydoni
+Frostinator
+7 soniya taxminan 95% slow
+Spanish Flu
+Kasallik statusi bilan zarar
+Santa Strike
+Keng maydonni qamrab oladigan hujum
+12. Dastur arxitekturasi
+Game Manager: pause, lives, win/lose, score. Map Manager: kataklar, buildable joylar, kirish va chiqish.
+Pathfinding Manager: Dijkstra va flow-field. Wave Manager: tarkib, spawn vaqtlari. Enemy Manager: harakat,
+HP, death/escape. Tower Manager: placement, targeting, attack, upgrade, sell. Combat System: damage,
+projectile, status, AoE. Economy Manager: pul, narx, refund. UI: pul, health, wave, tower panel. Save: levels,
+unlocks, stars, coins.
+13. Android 1.8 uchun ochiq qolgan aniq ma’lumotlar
+Aniq grid eni va bo‘yi, har bir xaritadagi cell count, barcha dushmanlarning bazaviy HPsi va tezligi, tower
+attack interval/projectile speed, barcha wave spawn ro‘yxatlari, haqiqiy damage-resistance foizlari va Android
+1.8 balansidagi farqlar hali alohida tekshiruvni talab qiladi. Bu qiymatlarni taxmin qilib original statistikasi
+sifatida taqdim etish noto‘g‘ri bo‘ladi.
+Foydalanilgan asosiy manbalar
+
+
+--- PAGE 5 ---
+5-bet
+GamerGuides, Fieldrunners 2 towers / units: https://www.gamerguides.com/fieldrunners-2/
+Game AI Pro, Efficient Crowd Simulation for Mobile Games: https://www.gameaipro.com/GameAIPro/GameAIPr
+o_Chapter24_Efficient_Crowd_Simulation_for_Mobile_Games.pdf
+Fieldrunners 2, rasmiy App Store tavsifi: https://apps.apple.com/us/app/fieldrunners-2/id527358348

@@ -1,0 +1,448 @@
+
+FIELDRUNNERS 2
+WAVE / ROUND / MONEY SYSTEM
+=========================================
+
+1. WAVE NIMA?
+-----------------------------------------
+
+Wave = Dushmanlar to‘lqini
+Round = O‘yindagi to‘lqin raqami
+
+Masalan:
+Round 1/50
+
+1  = Hozirgi to‘lqin
+50 = Bosqichdagi jami to‘lqinlar
+
+Har bir Wave davomida:
+- Dushmanlar paydo bo‘ladi.
+- Ular chiqish tomon yuradi.
+- Towerlar avtomatik hujum qiladi.
+- O‘ldirilgan dushman pul beradi.
+- Qochib ketgan dushman jon kamaytiradi.
+- To‘lqin tugagach keyingisi boshlanadi.
+
+Wave 1 -> Wave 2 -> Wave 3 -> ...
+-> Final Wave -> Victory
+
+=========================================
+2. WAVE DARAJALARI
+=========================================
+
+O‘yinda barcha xaritalarga bir xil
+Wave soni biriktirilmagan.
+
+Bosqichga qarab quyidagilar bo‘lishi
+mumkin:
+
+- 20 Round
+- 50 Round
+- 60 Round
+- 80 Round
+- Boshqa bosqichga xos chegaralar
+- Endless Mode: davom etuvchi roundlar
+
+O‘yin rejimiga qarab Wave tizimi
+ham o‘zgaradi.
+
+SURVIVAL:
+Belgilangan roundlarni tugatish.
+
+ENDLESS:
+Asosiy bosqichdan keyin ham
+dushmanlar kelishda davom etadi.
+
+SUDDEN DEATH:
+Oddiy wave oralig‘i bo‘lmasligi mumkin.
+Dushmanlar tez va uzluksiz keladi.
+
+TIME TRIAL:
+Belgilangan vaqt ichida kerakli
+miqdorda dushmanlarni o‘ldirish.
+
+PUZZLE:
+Har bir yoki bir nechta wave orasida
+joylashuv va pul qayta boshlanishi
+mumkin.
+
+=========================================
+3. WAVE QIYINLIGI QANDAY O‘SADI?
+=========================================
+
+Tasdiqlangan umumiy mexanika:
+
+- Keyingi to‘lqinlarda dushmanlar
+  bardoshliroq bo‘lishi mumkin.
+- Kuchliroq dushman turlari chiqadi.
+- Tezkor va uchuvchi birliklar paydo
+  bo‘ladi.
+- Endless Mode davomida dushmanlarning
+  HP ko‘rsatkichlari oshib boradi.
+
+NAMUNAVIY BALANS (ORIGINAL EMAS):
+
+Wave 1–5:
+  Oddiy Runnerlar.
+  Kam miqdorda dushman.
+  Past HP.
+
+Wave 6–10:
+  Ko‘proq Runner.
+  Tezkor birliklar.
+  Yengil transport.
+
+Wave 11–20:
+  Super Trooper.
+  Medic.
+  Mototsikl.
+  Tanklar.
+
+Wave 21–30:
+  Vertolyotlar.
+  Kuchli zirhli birliklar.
+  Katta guruhlar.
+
+Wave 31–40:
+  Turli aralash dushmanlar.
+  Tez va yuqori HPli birliklar.
+
+Wave 41–50:
+  Og‘ir tanklar.
+  Kuchli havo birliklari.
+  Murakkab dushman kombinatsiyalari.
+
+MUHIM:
+Bu Wave 1–50 bo‘linishi o‘zingiz
+o‘yin yaratishingiz uchun namunadir.
+Original o‘yinning hamma xaritasida
+dushmanlar shu tartibda chiqmaydi.
+
+=========================================
+4. ASOSAN QANDAY PUL BERILADI?
+=========================================
+
+Fieldrunners 2 da asosiy jang puli
+o‘ldirilgan dushman uchun beriladi.
+
+HAR BIR DUSHMANNING PUL MUKOFOTI:
+
+PIYODA ASKARLAR:
+
+Runner             = $1
+Super Trooper      = $2
+Medic              = $1
+Toastmaster        = $1
+Stubborn Runner    = $1
+Hazmat             = $1
+
+MOTOTSIKL VA TRANSPORT:
+
+Dirty Hog          = $2
+Scrambler          = $1
+Sidehacker         = $2
+Heavy Transport    = $2
+Jammed Jeep        = $2
+V2 on a Truck      = $2
+
+TANKLAR:
+
+Baby Tank          = $5
+Momma Tank         = $10
+
+HAVO BIRLIKLARI:
+
+Wingnut            = $2
+Huey Copter        = $2
+Louie Copter       = $10
+Fokker             = $2
+S-17 Skywhale      = $5
+Bad Day Blimp      = $40
+
+=========================================
+5. PUL QACHON BERILADI?
+=========================================
+
+Dushman HP <= 0 bo‘lsa:
+
+1. Dushman o‘ladi.
+2. Uning reward qiymati olinadi.
+3. Pul o‘yinchining hisobiga qo‘shiladi.
+4. Ochko ham beriladi.
+5. Dushman xaritadan olib tashlanadi.
+
+FORMULA:
+
+CurrentMoney =
+    CurrentMoney + EnemyReward
+
+MASALAN:
+
+Boshlang‘ich pul = $30
+
+5 ta Runner:
+5 × $1 = $5
+
+3 ta Super Trooper:
+3 × $2 = $6
+
+2 ta Baby Tank:
+2 × $5 = $10
+
+Jami topilgan pul:
+$5 + $6 + $10 = $21
+
+Yangi balans:
+$30 + $21 = $51
+
+Towerga $20 sarflansa:
+$51 - $20 = $31
+
+=========================================
+6. WAVE TUGAGANDA BONUS PUL BORMI?
+=========================================
+
+Hamma xaritada bir xil miqdordagi
+Wave Completion Bonus mavjudligi
+tasdiqlanmagan.
+
+Lekin ayrim Puzzle xaritalarda
+Wave yakunida pul berilishi mavjud.
+
+MISOL:
+
+CARNIE GUARDING xaritasida
+har bir yakunlangan Wave uchun:
+
++ $30
+
+Bu aniq bir xaritaga xos qoida.
+Uni barcha bosqichlarga tatbiq
+qilish noto‘g‘ri.
+
+PUL MANBALARI:
+
+A) Enemy Kill Reward
+   Dushman o‘ldirishdan pul.
+
+B) Level-Specific Wave Bonus
+   Ayrim bosqichlarda wave mukofoti.
+
+C) Tower Sell
+   Minorani sotishdan qaytgan pul.
+
+Bular jang ichidagi puldir.
+
+=========================================
+7. COINS VA DOLLAR FARQI
+=========================================
+
+DOLLAR ($):
+- Jang davomida ishlatiladi.
+- Tower sotib olish.
+- Tower upgrade qilish.
+- Dushman o‘ldirish bilan topiladi.
+
+COINS:
+- Bosqichlar va boshqa mukofot
+  tizimlari orqali olinadi.
+- Yangi qurol yoki Item ochishda
+  ishlatiladi.
+- Jangdagi dollar bilan bir xil emas.
+
+SCORE:
+- Natijani baholash uchun.
+- Pul hisobidan alohida.
+
+STARS:
+- Bosqich natijasi.
+- Ayrim qurollarni ochish uchun.
+
+=========================================
+8. WAVE SPAWN SYSTEM
+=========================================
+
+Har bir Wave uchun quyidagi
+ma’lumotlar saqlanishi mumkin:
+
+WaveNumber
+EnemyType
+EnemyCount
+SpawnInterval
+SpawnPosition
+EnemyHPModifier
+EnemySpeedModifier
+
+MISOL (ORIGINAL EMAS):
+
+Wave 1:
+Enemy: Runner
+Count: 10
+SpawnInterval: 1.0 second
+
+Wave 2:
+Enemy: Runner
+Count: 15
+SpawnInterval: 0.9 second
+
+Wave 3:
+Enemy: Runner
+Count: 20
+SpawnInterval: 0.8 second
+
+Wave 4:
+Enemy: Runner + Super Trooper
+Count: 18
+SpawnInterval: 0.8 second
+
+Wave 5:
+Enemy: Runner + Dirty Hog
+Count: 20
+SpawnInterval: 0.7 second
+
+Bu faqat ishlab chiqish namunasi.
+Original o‘yinning haqiqiy
+Wave jadvali emas.
+
+=========================================
+9. WAVE SPAWN ALGORITMI
+=========================================
+
+GAME START
+    |
+    v
+CurrentWave = 1
+    |
+    v
+Wave konfiguratsiyasini yuklash
+    |
+    v
+Spawn Timer ishga tushadi
+    |
+    v
+Dushman paydo bo‘ladi
+    |
+    v
+SpawnInterval kutish
+    |
+    v
+Keyingi dushman paydo bo‘ladi
+    |
+    v
+Wave tarkibidagi dushmanlar
+chiqarib bo‘lindimi?
+    |
+    +-- YO‘Q -> Spawn davom etadi
+    |
+    +-- HA -> Wave tugashini tekshirish
+                     |
+                     v
+              Keyingi Wave
+
+Wave yakunini aniqlashda faqat
+spawn tugaganini emas, xaritada
+qolgan dushmanlarni ham hisobga
+olish kerak.
+
+=========================================
+10. WAVE MONEY FORMULA
+=========================================
+
+Bir Wave davomida topilgan pul:
+
+WaveMoney =
+  SUM(KilledEnemyCount × EnemyReward)
+  + LevelSpecificWaveBonus
+
+Jangdagi yangi balans:
+
+MoneyAfterWave =
+  MoneyBeforeWave
+  + WaveMoney
+  + TowerSellRefund
+  - TowerPurchaseCost
+  - TowerUpgradeCost
+
+Bu umumiy hisoblash modeli.
+
+MISOL:
+
+10 Runner       = $10
+5 Super Trooper = $10
+2 Baby Tank     = $10
+
+Kill Reward     = $30
+
+Maxsus bonus    = $0
+
+WaveMoney       = $30
+
+Agar shu xaritada $10 bonus bo‘lsa:
+WaveMoney = $40
+
+=========================================
+11. ENDLESS MODE
+=========================================
+
+Endless Mode asosiy roundlar
+tugagandan so‘ng davom etadi.
+
+Muhim xususiyatlar:
+
+- Dushman HP ko‘rsatkichlari o‘sadi.
+- Kuchli towerlar zarur bo‘ladi.
+- O‘yin murakkablashadi.
+- Maksimal ochko olish mumkin.
+- Resurslarni to‘g‘ri taqsimlash muhim.
+
+Endless Mode HP o‘sishining aniq
+formulasi tekshirilmagan.
+
+NAMUNAVIY FORMULA (ORIGINAL EMAS):
+
+EnemyHP =
+  BaseHP × (1 + WaveNumber × 0.05)
+
+Misol:
+BaseHP = 100
+Wave = 20
+
+HP = 100 × (1 + 20 × 0.05)
+HP = 200
+
+Bu hisob faqat o‘xshash o‘yin
+yaratish uchun misoldir.
+
+=========================================
+12. HAR BIR WAVE UCHUN MA'LUMOTLAR
+=========================================
+
+To‘liq Wave Database quyidagicha
+bo‘lishi tavsiya etiladi:
+
+wave_id
+wave_number
+enemy_type
+enemy_count
+enemy_hp
+enemy_speed
+spawn_interval
+spawn_location
+kill_reward
+wave_bonus
+difficulty_multiplier
+is_boss_wave
+is_final_wave
+
+ESLATMA:
+
+Fieldrunners 2 Android 1.8 uchun
+barcha xaritalarning har bir Wave
+tarkibi, aniq dushman soni, spawn
+intervali va HP ko‘paytirgichlari
+hozircha to‘liq tasdiqlanmagan.
+
+Shuning uchun bunday raqamlarni
+original o‘yinniki sifatida
+to‘qib kiritish mumkin emas.
+=========================================

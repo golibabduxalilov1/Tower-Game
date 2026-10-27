@@ -1,0 +1,22 @@
+expect screen Menu
+press @play
+press map:0
+press @start
+press tower:Gatling
+cell 1 5
+cell 1 7
+cancel
+press @start_wave
+wait 45
+shot artifacts/entry-approach/approach-a.png
+wait 40
+shot artifacts/entry-approach/approach-b.png
+press pause
+expect state Paused
+shot artifacts/entry-approach/paused-a.png
+wait 45
+shot artifacts/entry-approach/paused-b.png
+press @resume
+wait 90
+shot artifacts/entry-approach/entered.png
+quit
